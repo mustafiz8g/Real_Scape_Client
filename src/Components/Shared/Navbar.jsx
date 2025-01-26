@@ -30,20 +30,19 @@ const Navbar = () => {
 
     const navOptions2 = <>
         <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
-        <li><NavLink className='font-bold' to='/'>Wishlist</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>Property bought</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>My reviews</NavLink></li>
+        <li><NavLink className='font-bold' to='/wishlist'>Wishlist</NavLink></li>
+        <li><NavLink className='font-bold ' to='/property-bought'>Property bought</NavLink></li>
+        <li><NavLink className='font-bold ' to='/my-reviews'>My reviews</NavLink></li>
 
         {/* agent dashboard  */}
-        <li><NavLink className='font-bold ' to='/'>Add Property</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>My added properties</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>My sold properties</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>Requested properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/add-property'>Add Property</NavLink></li>
+        <li><NavLink className='font-bold ' to='/my-added-property'>My added properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/my-sold-property'>My sold properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/requested-property'>Requested properties</NavLink></li>
         {/* admin profile  */}
-        <li><NavLink className='font-bold ' to='/'>Manage Properties</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>Manage Users</NavLink></li>
-        <li><NavLink className='font-bold ' to='/'></NavLink></li>
-        <li><NavLink className='font-bold ' to='/'>Manage Reviews</NavLink></li>
+        <li><NavLink className='font-bold ' to='/manage-properties'>Manage Properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/manage-users'>Manage Users</NavLink></li>
+        <li><NavLink className='font-bold ' to='/manage-reviews'>Manage Reviews</NavLink></li>
         
         <li><button className="  font-bold" onClick={handleLogOut}>Log Out</button> </li>
     </>
