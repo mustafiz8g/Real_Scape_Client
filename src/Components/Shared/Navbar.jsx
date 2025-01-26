@@ -1,96 +1,121 @@
 
-import { AiOutlineMenu } from 'react-icons/ai'
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
-import avatarImg from '../../assets/placeholder.jpg'
-import Container from './Container'
-import useAuth from '../../hooks/useAuth'
+import { FaBars } from "react-icons/fa";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+
 const Navbar = () => {
-  const { user, logOut } = useAuth()
-  const [isOpen, setIsOpen] = useState(false)
+    const { user, logOutUser } = useAuth();
+    const navigate = useNavigate();
+    
+    // const defaultPhoto = "https://i.ibb.co.com/TTNz5Yp/Screenshot-2024-12-22-103839.png"
 
-  return (
-    <div className='fixed w-full bg-white z-10 shadow-sm'>
-      <div className='py-4 border-b-[1px]'>
-        <Container>
-          <div className='flex flex-row  items-center justify-between gap-3 md:gap-0'>
-            {/* Logo */}
-            <Link to='/'>
-              logo
-            </Link>
-            {/* Dropdown Menu */}
-            <div className='relative'>
-              <div className='flex flex-row items-center gap-3'>
-                {/* Dropdown btn */}
-                <div
-                  onClick={() => setIsOpen(!isOpen)}
-                  className='p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition'
-                >
-                  <AiOutlineMenu />
-                  <div className='hidden md:block'>
-                    {/* Avatar */}
-                    <img
-                      className='rounded-full'
-                      referrerPolicy='no-referrer'
-                      src={user && user.photoURL ? user.photoURL : avatarImg}
-                      alt='profile'
-                      height='30'
-                      width='30'
-                    />
-                  </div>
-                </div>
-              </div>
-              {isOpen && (
-                <div className='absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm'>
-                  <div className='flex flex-col cursor-pointer'>
-                    <Link
-                      to='/'
-                      className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                    >
-                      Home
-                    </Link>
 
-                    {user ? (
-                      <>
-                        <Link
-                          to='/dashboard'
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                        >
-                          Dashboard
-                        </Link>
-                        <div
-                          onClick={logOut}
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold cursor-pointer'
-                        >
-                          Logout
+
+    const navOptions = < >
+        <li><NavLink className='font-bold ' to='/'>Home</NavLink></li>
+        <li><NavLink className='font-bold ' to='/allFoods'>All Properties</NavLink></li>
+    </>
+
+     const handleLogOut = () => {
+        logOutUser()
+            .then(() => {
+                navigate('/')
+
+            })
+            .catch(err => {
+                // console.log('Error ', err.message)
+            })
+    }
+
+    const navOptions2 = <>
+        <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
+        <li><NavLink className='font-bold' to='/'>Wishlist</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>Property bought</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>My reviews</NavLink></li>
+
+        {/* agent dashboard  */}
+        <li><NavLink className='font-bold ' to='/'>Add Property</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>My added properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>My sold properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>Requested properties</NavLink></li>
+        {/* admin profile  */}
+        <li><NavLink className='font-bold ' to='/'>Manage Properties</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>Manage Users</NavLink></li>
+        <li><NavLink className='font-bold ' to='/'></NavLink></li>
+        <li><NavLink className='font-bold ' to='/'>Manage Reviews</NavLink></li>
+        
+        <li><button className="  font-bold" onClick={handleLogOut}>Log Out</button> </li>
+    </>
+
+   
+
+    return (
+        <div className="z-50 sticky top-0 navBar  ">
+            <div className="w-11/12 mx-auto navbar flex justify-between ">
+
+                <div className="first">
+                    <div className="dropdown">
+                        <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                            <FaBars className="text-xl" />
+
                         </div>
-                      </>
-                    ) : (
-                      <>
-                        <Link
-                          to='/login'
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                        >
-                          Login
-                        </Link>
-                        <Link
-                          to='/signup'
-                          className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
-                        >
-                          Sign Up
-                        </Link>
-                      </>
-                    )}
-                  </div>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow ">
+                            {navOptions}
+                        </ul>
+                    </div>
+                    <Link to='/' className=" text-3xl font-bold">REAL <span className="text-blue-600 font-bold">SCAPE</span></Link>
                 </div>
-              )}
-            </div>
-          </div>
-        </Container>
-      </div>
-    </div>
-  )
-}
+                <div className="flex justify-between items-center"> 
+                    <div className="second hidden md:flex">
+                        <ul className="menu menu-horizontal  px-1 ">
+                            {navOptions}
+                        </ul>
 
-export default Navbar
+                    </div>
+                    <div className="third">
+
+                        <div className="*:font-bold">
+
+                            {
+                                user ?
+
+                                    <div className="dropdown">
+                                        <div tabIndex={0} role="button" className="">
+                                            <div className="flex justify-center items-center gap-2">
+
+                                                <div className="w-12 h-12">
+                                                    <img title={user.displayName} className="w-full h-full  object-contain rounded-full border  border-white border-2 hover:border-orange-400" src={user?.photoURL } alt="profile" />
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <ul
+                                            tabIndex={0}
+                                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 right-3 shadow ">
+                                            {navOptions2}
+                                        </ul>
+                                    </div>
+
+
+                                    :
+                                    <div>
+                                        <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/login' >Login</Link>
+                                        <span> / </span>
+                                        <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/register' >Register</Link>
+                                    </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    );
+};
+
+export default Navbar;

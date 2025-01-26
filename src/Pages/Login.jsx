@@ -1,142 +1,195 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
-import LoadingSpinner from '../Components/Shared/LoadingSpinner'
-import toast from 'react-hot-toast'
-import { TbFidgetSpinner } from 'react-icons/tb'
-import useAuth from '../hooks/useAuth'
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import { MdRemoveRedEye } from "react-icons/md";
+import { FaEyeSlash } from "react-icons/fa";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
-  const { signIn, signInWithGoogle, loading, user } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = location?.state?.from?.pathname || '/'
-  if (user) return <Navigate to={from} replace={true} />
-  if (loading) return <LoadingSpinner />
-  // form submit handler
-  const handleSubmit = async event => {
-    event.preventDefault()
-    const form = event.target
-    const email = form.email.value
-    const password = form.password.value
+    const { loginUser, forgetPassword } = useAuth();
 
-    try {
-      //User Login
-      await signIn(email, password)
+    const [showPassword, setShowPassword] = useState(false);
+    const [successSMS, setSuccessSMS] = useState('');
+    const [error, setError] = useState('');
 
-      navigate(from, { replace: true })
-      toast.success('Login Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
+
+
+    const emailRef = useRef();
+
+    const location = useLocation();
+    const navigate = useNavigate()
+    const from = location.state || '/';
+    const handleLogin = e => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+
+
+        setSuccessSMS('')
+        setError('')
+        if (password.length < 6) {
+            setError('password should be 6 cahharacters or longer')
+            return;
+        }
+        const passwordRegexU = /^(?=.*[A-Z]).+$/
+        const passwordRegexL = /^(?=.*[a-z]).+$/
+    
+        if (!passwordRegexU.test(password)) {
+            setError('At least one Caracter Uppercase')
+            return;
+        }
+        if (!passwordRegexL.test(password)) {
+            setError('At least one Caracter Lowercase')
+            return;
+        }
+
+        loginUser(email, password)
+            .then(result => {
+                // console.log('sign IN :', result.user.email)
+                if (result.user) {
+                    Swal.fire({
+                        title: "Login Successful",
+                        icon: "success"
+                    });
+                }
+
+
+           
+
+
+                navigate(from)
+
+            })
+            .catch(err => {
+                // console.log(err.message)
+                setError(err.message)
+            })
+
     }
-  }
 
-  // Handle Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      //User Registration using google
-      await signInWithGoogle()
-      navigate(from, { replace: true })
-      toast.success('Login Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
+    const handleForgetPassword = () => {
+
+        const email = emailRef.current.value;
+        if (!email) {
+            toast('Please Provide a valid email')
+            return;
+        }
+        else {
+            forgetPassword(email)
+                .then(() => {
+                    toast('Password Reset Email Sent, Please check you email')
+                })
+
+
+        }
+
     }
-  }
-  return (
-    <div className='flex justify-center items-center min-h-screen bg-white'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
-        <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold'>Log In</h1>
-          <p className='text-sm text-gray-400'>
-            Sign in to access your account
-          </p>
-        </div>
-        <form
-          onSubmit={handleSubmit}
-          noValidate=''
-          action=''
-          className='space-y-6 ng-untouched ng-pristine ng-valid'
-        >
-          <div className='space-y-4'>
+
+
+    const handlePassword = ev => {
+        ev.preventDefault();
+        const newPassword = ev.target.value;
+        setError('')
+        setSuccessSMS('')
+        //password validation 
+
+        if (newPassword.length <= 6) {
+            setError('password should be 6 cahharacters or longer')
+
+        }
+        const passwordRegexU = /^(?=.*[A-Z]).+$/
+        const passwordRegexL = /^(?=.*[a-z]).+$/
+        if (!passwordRegexU.test(newPassword)) {
+            setError('At least one Caracter Uppercase')
+
+        }
+        if (!passwordRegexL.test(newPassword)) {
+            setError('At least one Caracter Lowercase')
+
+        }
+        if (newPassword.length > 6 && passwordRegexU.test(newPassword) && passwordRegexL.test(newPassword)) {
+            setSuccessSMS('strong')
+        }
+
+
+    }
+
+
+    return (
+        <div className="w-10/12 min-h-[500px] mx-auto flex flex-col-reverse md:flex-row justify-center items-center">
+
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm'>
-                Email address
-              </label>
-              <input
-                type='email'
-                name='email'
-                id='email'
-                required
-                placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
-                data-temp-mail-org='0'
-              />
+            <form onSubmit={handleLogin} className="w-[340px]">
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text font-semibold">Email</span>
+                    </label>
+                    <input
+                        name="email"
+                        type="email"
+                        ref={emailRef}
+                        placeholder="email"
+                        className="input input-bordered"
+                        required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text font-semibold">Password</span>
+                    </label>
+                    <input
+                        name="password"
+                        type={showPassword ? 'text' : 'password'}
+                        onChange={handlePassword}
+
+                        placeholder="password"
+                        className="input input-bordered"
+                        required
+                    // autoComplete="current-password"
+
+                    />
+                    <div
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="relative w-6 left-[300px] bottom-8">
+                        {
+                            showPassword ? <MdRemoveRedEye /> : <FaEyeSlash />
+                        }
+                    </div>
+                    <div className="form-control ">
+                        <p className="text-sm text-success">{successSMS}</p>
+                        <p className="text-sm text-error">{error}</p>
+
+                    </div>
+                    <label onClick={handleForgetPassword} className="label">
+                        <a className="label-text-alt link link-hover">Forgot password?</a>
+                    </label>
+
+                </div>
+
+                <div className="form-control mt-4">
+                    <button className="btn btn-primary  text-[16px]">Login</button>
+                </div>
+
+                <div>
+                    <p className="text-[14px] mt-3">dont have Account ? <Link to="/signup"><button className="link link-info font-bold">Register</button>
+                    </Link></p>
+                </div>
+                <div className="divider"><small>OR</small></div>
+
+                
+
+
+            </form>
+      
             </div>
-            <div>
-              <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2'>
-                  Password
-                </label>
-              </div>
-              <input
-                type='password'
-                name='password'
-                autoComplete='current-password'
-                id='password'
-                required
-                placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
-              />
-            </div>
-          </div>
 
-          <div>
-            <button
-              type='submit'
-              className='bg-lime-500 w-full rounded-md py-3 text-white'
-            >
-              {loading ? (
-                <TbFidgetSpinner className='animate-spin m-auto' />
-              ) : (
-                'Continue'
-              )}
-            </button>
-          </div>
-        </form>
-        <div className='space-y-1'>
-          <button className='text-xs hover:underline hover:text-lime-500 text-gray-400'>
-            Forgot password?
-          </button>
-        </div>
-        <div className='flex items-center pt-4 space-x-1'>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-          <p className='px-3 text-sm dark:text-gray-400'>
-            Login with social accounts
-          </p>
-          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
-        </div>
-        <div
-          onClick={handleGoogleSignIn}
-          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
-        >
-          <FcGoogle size={32} />
 
-          <p>Continue with Google</p>
+         
         </div>
-        <p className='px-6 text-sm text-center text-gray-400'>
-          Don&apos;t have an account yet?{' '}
-          <Link
-            to='/signup'
-            className='hover:underline hover:text-lime-500 text-gray-600'
-          >
-            Sign up
-          </Link>
-          .
-        </p>
-      </div>
-    </div>
-  )
-}
+    );
+};
 
-export default Login
+export default Login;     

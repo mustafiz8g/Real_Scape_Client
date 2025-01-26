@@ -1,10 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-hot-toast'
-import { TbFidgetSpinner } from 'react-icons/tb'
 
 import useAuth from '../hooks/useAuth'
 import { imageUpload } from '../hooks/Utils'
+import { FaGoogle } from 'react-icons/fa'
 
 const SignUp = () => {
   const { createUser, updateUserProfile, signInWithGoogle, loading } = useAuth()
@@ -53,11 +52,11 @@ const SignUp = () => {
     }
   }
   return (
-    <div className='flex justify-center items-center min-h-screen bg-white'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+    <div className='flex justify-center items-center min-h-screen '>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10  text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to PlantNet</p>
+          <p className='text-sm '>Welcome to RealScape</p>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -75,7 +74,7 @@ const SignUp = () => {
                 name='name'
                 id='name'
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md  focus:outline-blue-500 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -101,7 +100,7 @@ const SignUp = () => {
                 id='email'
                 required
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -118,7 +117,7 @@ const SignUp = () => {
                 id='password'
                 required
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-blue-500 bg-gray-200 text-gray-900'
               />
             </div>
           </div>
@@ -126,13 +125,9 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-lime-500 w-full rounded-md py-3 text-white'
+              className='bg-blue-500 w-full rounded-md py-3 text-white'
             >
-              {loading ? (
-                <TbFidgetSpinner className='animate-spin m-auto' />
-              ) : (
-                'Continue'
-              )}
+            Sign Up
             </button>
           </div>
         </form>
@@ -147,7 +142,7 @@ const SignUp = () => {
           onClick={handleGoogleSignIn}
           className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
         >
-          <FcGoogle size={32} />
+          <FaGoogle></FaGoogle> 
 
           <p>Continue with Google</p>
         </div>
@@ -155,7 +150,7 @@ const SignUp = () => {
           Already have an account?{' '}
           <Link
             to='/login'
-            className='hover:underline hover:text-lime-500 text-gray-600'
+            className='hover:underline hover:text-blue-500 text-gray-600'
           >
             Login
           </Link>
