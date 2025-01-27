@@ -33,47 +33,47 @@ export const router = createBrowserRouter([
       },
       {
         path: 'profile',
-        element:<PrivateRoute><Profile></Profile></PrivateRoute>
+        element:<Profile></Profile>
       },
       {
         path: 'wishlist',
-        element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
+        element: <Wishlist></Wishlist>
       },
       {
         path: 'property-bought',
-        element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
+        element: <PropertyBought></PropertyBought>
       }, 
       {
         path: 'my-reviews',
-        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+        element:<MyReviews></MyReviews>
       },
       {
         path: 'add-property',
-        element: <PrivateRoute><AgentRoute><AddProperty></AddProperty></AgentRoute></PrivateRoute>
+        element: <AgentRoute><AddProperty></AddProperty></AgentRoute>
       },
       {
         path: 'my-added-property',
-        element: <PrivateRoute><AgentRoute><MyAddedProperty></MyAddedProperty></AgentRoute></PrivateRoute>
+        element: <AgentRoute><MyAddedProperty></MyAddedProperty></AgentRoute>
       },
       {
         path: 'my-sold-property',
-        element: <PrivateRoute><AgentRoute><MySoldProperty></MySoldProperty></AgentRoute></PrivateRoute>
+        element: <AgentRoute><MySoldProperty></MySoldProperty></AgentRoute>
       },
       {
         path: 'requested-property',
-        element:<PrivateRoute> <AgentRoute><RequestedProperty></RequestedProperty></AgentRoute></PrivateRoute>
+        element: <AgentRoute><RequestedProperty></RequestedProperty></AgentRoute>
       }, 
       {
         path: 'manage-properties',
-        element:<PrivateRoute> <AdminRoute><ManageProperties></ManageProperties></AdminRoute></PrivateRoute>
+        element: <AdminRoute><ManageProperties></ManageProperties></AdminRoute>
       },
       {
         path: 'manage-users',
-        element: <PrivateRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivateRoute>
+        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: 'manage-reviews',
-        element:<PrivateRoute> <AdminRoute><ManageReviews></ManageReviews></AdminRoute></PrivateRoute>
+        element: <AdminRoute><ManageReviews></ManageReviews></AdminRoute>
       }
       
  

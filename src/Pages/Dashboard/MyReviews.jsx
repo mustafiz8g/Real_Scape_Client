@@ -2,7 +2,7 @@
 const MyReviews = () => {
     return (
         <div>
-            
+            reveee
         </div>
     );
 };
