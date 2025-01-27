@@ -20,6 +20,7 @@ import AdminRoute from './AdminRoute'
 import AgentRoute from './AgentRoute'
 import PrivateRoute from './PrivateRoute'
 import PropertyDetails from '../Pages/PropertyDetails'
+import AllProperties from '../Pages/AllProperties'
 
 
 export const router = createBrowserRouter([
@@ -33,17 +34,22 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: 'allProperties',
+        element: <PrivateRoute><AllProperties></AllProperties></PrivateRoute>
+      }
+      ,
+      {
         path: 'profile',
-        element:<Profile></Profile>
+        element:<PrivateRoute><Profile></Profile></PrivateRoute>
       },
       {
         path: 'property/:id',
-        element: <PropertyDetails></PropertyDetails>
+        element: <PrivateRoute><PropertyDetails></PropertyDetails></PrivateRoute>
       }
       ,
       {
         path: 'wishlist',
-        element: <Wishlist></Wishlist>
+        element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
       },
       {
         path: 'property-bought',

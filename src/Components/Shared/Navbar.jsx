@@ -16,7 +16,7 @@ const Navbar = () => {
 
   const navOptions = < >
     <li><NavLink className='font-bold ' to='/'>Home</NavLink></li>
-    <li><NavLink className='font-bold ' to='/allFoods'>All Properties</NavLink></li>
+    <li><NavLink className='font-bold ' to='/allProperties'>All Properties</NavLink></li>
   </>
 
 

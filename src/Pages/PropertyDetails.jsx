@@ -1,18 +1,17 @@
-
-
-
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 import Container from "../Components/Shared/Container";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const PropertyDetails = () => {
   const { user } = useAuth();
   const { id } = useParams();
-  const { data: property = {}, isLoading } = useQuery({
+  const { data: property = {}, isLoading, refetch } = useQuery({
     queryKey: ["property", id],
     queryFn: async () => {
       const { data } = await axios(
@@ -22,18 +21,48 @@ const PropertyDetails = () => {
     },
   });
 
+  // State for review input
+  const [review, setReview] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   if (isLoading) return <LoadingSpinner />;
 
   const { title, location, minPrice, maxPrice, image, description } = property;
 
-  const handleAddToWishlist = () => {
+  const handleAddToWishlist = async () => {
     console.log("Added to wishlist:", id);
     // Implement add-to-wishlist functionality here
   };
 
-  const handleAddReview = () => {
-    console.log("Opening review modal...");
-    // Implement add-review functionality or modal here
+  const handleReviewSubmit = async () => {
+    if (!review.trim()) {
+      toast.error("Review cannot be empty!");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/reviews`,
+        {
+          property_title: title,
+          reviewer_name: user?.displayName,
+          reviewer_image: user?.photoURL,
+          reviewText: review,
+        }
+      );
+
+      console.log("Review submitted:", response.data);
+      toast.success("Review submitted successfully!");
+      setReview(""); 
+      refetch(); 
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      toast.error("Failed to submit review. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -86,14 +115,18 @@ const PropertyDetails = () => {
         <div className="space-y-6">
           <h2 className="text-2xl font-semibold text-gray-800">Add a Review</h2>
           <textarea
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
             placeholder="Write your review here..."
             className="w-full h-32 p-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            disabled={isSubmitting}
           ></textarea>
           <button
-            onClick={handleAddReview}
+            onClick={handleReviewSubmit}
             className="px-6 py-3 bg-green-600 text-white rounded-xl shadow-md hover:bg-green-700 transition"
+            disabled={isSubmitting}
           >
-            Submit Review
+            {isSubmitting ? "Submitting..." : "Submit Review"}
           </button>
         </div>
       </div>
