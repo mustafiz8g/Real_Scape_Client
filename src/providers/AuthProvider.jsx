@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { createContext, useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
@@ -11,7 +12,6 @@ import {
 } from 'firebase/auth'
 
 import axios from 'axios'
-import PropTypes from 'prop-types'
 import { app } from '../firebase.config'
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -56,6 +56,14 @@ const AuthProvider = ({ children }) => {
       console.log('CurrentUser-->', currentUser?.email)
       if (currentUser?.email) {
         setUser(currentUser)
+        // save use4 info
+        await axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,{
+          name:currentUser?.displayName , 
+          image: currentUser?.photoURL,
+          email: currentUser?.email,
+          
+                                   
+        })
 
         // Get JWT token
         await axios.post(
@@ -93,9 +101,6 @@ const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   )
-}
-AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default AuthProvider

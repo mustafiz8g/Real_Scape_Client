@@ -3,10 +3,12 @@
 import { FaBars } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const Navbar = () => {
-    const { user, logOutUser } = useAuth();
+    const { user, signOut } = useAuth();
     const navigate = useNavigate();
+    const [role, isLoading] = useRole()
     
     // const defaultPhoto = "https://i.ibb.co.com/TTNz5Yp/Screenshot-2024-12-22-103839.png"
 
@@ -18,7 +20,7 @@ const Navbar = () => {
     </>
 
      const handleLogOut = () => {
-        logOutUser()
+      signOut()
             .then(() => {
                 navigate('/')
 
@@ -30,19 +32,32 @@ const Navbar = () => {
 
     const navOptions2 = <>
         <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
-        <li><NavLink className='font-bold' to='/wishlist'>Wishlist</NavLink></li>
+       {
+        role === 'customer' && <>
+          <li><NavLink className='font-bold' to='/wishlist'>Wishlist</NavLink></li>
         <li><NavLink className='font-bold ' to='/property-bought'>Property bought</NavLink></li>
         <li><NavLink className='font-bold ' to='/my-reviews'>My reviews</NavLink></li>
+        </>
+       }
 
         {/* agent dashboard  */}
-        <li><NavLink className='font-bold ' to='/add-property'>Add Property</NavLink></li>
+        {
+          role === 'agent' && <>
+          <li><NavLink className='font-bold ' to='/add-property'>Add Property</NavLink></li>
         <li><NavLink className='font-bold ' to='/my-added-property'>My added properties</NavLink></li>
         <li><NavLink className='font-bold ' to='/my-sold-property'>My sold properties</NavLink></li>
         <li><NavLink className='font-bold ' to='/requested-property'>Requested properties</NavLink></li>
+          </>
+        }
         {/* admin profile  */}
-        <li><NavLink className='font-bold ' to='/manage-properties'>Manage Properties</NavLink></li>
+       
+       {
+        role === 'admin' && <>
+         <li><NavLink className='font-bold ' to='/manage-properties'>Manage Properties</NavLink></li>
         <li><NavLink className='font-bold ' to='/manage-users'>Manage Users</NavLink></li>
         <li><NavLink className='font-bold ' to='/manage-reviews'>Manage Reviews</NavLink></li>
+        </>
+       }
         
         <li><button className="  font-bold" onClick={handleLogOut}>Log Out</button> </li>
     </>
@@ -103,7 +118,7 @@ const Navbar = () => {
                                     <div>
                                         <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/login' >Login</Link>
                                         <span> / </span>
-                                        <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/register' >Register</Link>
+                                        <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/signup' >Register</Link>
                                     </div>
                             }
 
