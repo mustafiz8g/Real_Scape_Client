@@ -1,7 +1,10 @@
 
 
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 const Card = ({ property }) => {
-    const { title, location, minPrice, maxPrice, image } = property;
+    const {_id, title, location, minPrice, maxPrice, image } = property;
   
     return (
       <div className="col-span-1 shadow-xl p-3 rounded-xl group cursor-pointer">
@@ -22,9 +25,21 @@ const Card = ({ property }) => {
           <div className="font-semibold text-lg">
             Price Range: ${minPrice} - ${maxPrice}
           </div>
+            <Link to={`/property/${_id}`}><button className='btn w-full'>Details</button></Link>
         </div>
       </div>
     );
-  };
+};
+Card.propTypes = {
+  property: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    minPrice: PropTypes.number.isRequired,
+    maxPrice: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+  
+}
   
   export default Card;

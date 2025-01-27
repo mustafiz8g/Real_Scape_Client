@@ -19,6 +19,7 @@ import ManageReviews from '../Pages/Dashboard/ManageReviews'
 import AdminRoute from './AdminRoute'
 import AgentRoute from './AgentRoute'
 import PrivateRoute from './PrivateRoute'
+import PropertyDetails from '../Pages/PropertyDetails'
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,11 @@ export const router = createBrowserRouter([
         path: 'profile',
         element:<Profile></Profile>
       },
+      {
+        path: 'property/:id',
+        element: <PropertyDetails></PropertyDetails>
+      }
+      ,
       {
         path: 'wishlist',
         element: <Wishlist></Wishlist>
