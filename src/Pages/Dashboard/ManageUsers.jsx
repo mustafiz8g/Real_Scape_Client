@@ -1,12 +1,12 @@
+ 
 
-
-
-const ManageUsers = () => {
+ 
+ const ManageUsers = () => {
     return (
         <div>
-            manage properties
+            manage uer
         </div>
     );
-};
-
-export default ManageUsers;
+ };
+ 
+ export default ManageUsers;

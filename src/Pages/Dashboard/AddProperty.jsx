@@ -36,7 +36,8 @@ const AddProperty = () => {
       minPrice,
       maxPrice,
       image: imageUrl,
-      agent
+      agent,
+      verification: 'pending'
     }
 
     // save plant in db   

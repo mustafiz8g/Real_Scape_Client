@@ -7,18 +7,18 @@ const Faq = () => {
             <div className="join join-vertical bg-base-100 w-full">
                 <div className="collapse collapse-arrow join-item border-base-300 border">
                     <input type="radio" name="my-accordion-4" defaultChecked />
-                    <div className="collapse-title font-semibold">How do I create an account?</div>
-                    <div className="collapse-content text-sm">Click the "Sign Up" button in the top right corner and follow the registration process.</div>
+                    <div className="collapse-title font-semibold">How does the platform work?</div>
+                    <div className="collapse-content text-sm">Our platform connects buyers, agents, and admins seamlessly. Buyers can browse properties, add them to their wishlist, and purchase directly. Agents can list and manage properties, while admins oversee the entire process for smooth operations.</div>
                 </div>
                 <div className="collapse collapse-arrow join-item border-base-300 border">
                     <input type="radio" name="my-accordion-4" />
-                    <div className="collapse-title font-semibold">I forgot my password. What should I do?</div>
-                    <div className="collapse-content text-sm">Click on "Forgot Password" on the login page and follow the instructions sent to your email.</div>
+                    <div className="collapse-title font-semibold">Why Choose Us?</div>
+                    <div className="collapse-content text-sm">We provide a user-friendly interface, verified listings, trusted agents, and a secure transaction process. Whether you're buying, selling, or managing, we ensure a hassle-free experience.</div>
                 </div>
                 <div className="collapse collapse-arrow join-item border-base-300 border">
                     <input type="radio" name="my-accordion-4" />
-                    <div className="collapse-title font-semibold">How do I update my profile information?</div>
-                    <div className="collapse-content text-sm">Go to "My Account" settings and select "Edit Profile" to make changes.</div>
+                    <div className="collapse-title font-semibold">What tools are available for agents?</div>
+                    <div className="collapse-content text-sm">Agents can add new properties, track requests, and view their sales performance. With detailed analytics, managing your listings has never been easier.</div>
                 </div>
             </div>
         </Container>
