@@ -22,6 +22,7 @@ import PrivateRoute from './PrivateRoute'
 import PropertyDetails from '../Pages/PropertyDetails'
 import AllProperties from '../Pages/AllProperties'
 import Offer from '../Components/Form/Offer'
+import PropertyUpdate from '../Pages/Dashboard/PropertyUpdate'
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-added-property',
         element: <AgentRoute><MyAddedProperty></MyAddedProperty></AgentRoute>
+      },
+      {
+        path: 'property/update/:id',
+        element: <PropertyUpdate></PropertyUpdate>
       },
       {
         path: 'my-sold-property',

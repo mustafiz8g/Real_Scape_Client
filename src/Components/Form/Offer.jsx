@@ -31,13 +31,23 @@ const Offer = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const { image, location, agent, price, title, verification } = offer;
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if amount is filled
-    if (!formData.amount) {
-      toast.error("Please enter the amount!");
+    // Validation for offer amount
+    const offerAmount = parseFloat(formData.amount);
+    if (!offerAmount) {
+      toast.error("Please enter a valid offer amount!");
+      return;
+    }
+
+    if (price && (offerAmount < price.minPrice || offerAmount > price.maxPrice)) {
+      toast.error(
+        `Offer amount must be between $${price.minPrice} and $${price.maxPrice}!`
+      );
       return;
     }
 
@@ -54,19 +64,16 @@ const Offer = () => {
         userName: user?.displayName,
 
         userEmail: user?.email,
-        boughtStatus: 'pending'
+        boughtStatus: "pending",
       });
 
       toast.success("Offer submitted successfully!");
-     
     } catch (error) {
-      toast.error(error.response?.data );
+      toast.error(error.response?.data || "Failed to submit the offer!");
     }
   };
 
   if (isLoading) return <LoadingSpinner />;
-
-  const { image, location, agent, price, title, verification } = offer;
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -84,7 +91,11 @@ const Offer = () => {
           <p className="text-gray-600">
             <strong>Agent:</strong> {agent?.name || "N/A"}
           </p>
-          <p className={`font-semibold ${verification ? "text-green-600" : "text-red-600"}`}>
+          <p
+            className={`font-semibold ${
+              verification ? "text-green-600" : "text-red-600"
+            }`}
+          >
             {verification ? "Verified Property" : "Unverified Property"}
           </p>
         </div>
@@ -96,7 +107,10 @@ const Offer = () => {
         <form onSubmit={handleSubmit}>
           {/* Amount Input */}
           <div className="mb-4">
-            <label htmlFor="amount" className="block text-gray-700 font-medium mb-2">
+            <label
+              htmlFor="amount"
+              className="block text-gray-700 font-medium mb-2"
+            >
               Offer Amount ($)
             </label>
             <input
@@ -113,7 +127,10 @@ const Offer = () => {
 
           {/* Buying Date Input */}
           <div className="mb-4">
-            <label htmlFor="buyingDate" className="block text-gray-700 font-medium mb-2">
+            <label
+              htmlFor="buyingDate"
+              className="block text-gray-700 font-medium mb-2"
+            >
               Buying Date
             </label>
             <input

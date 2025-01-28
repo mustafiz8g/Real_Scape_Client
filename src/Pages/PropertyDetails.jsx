@@ -27,39 +27,27 @@ const PropertyDetails = () => {
 
   if (isLoading) return <LoadingSpinner />;
 
-  const { title, location, minPrice, maxPrice, image, description,verification, agent } = property;
+  const { title, location, minPrice, maxPrice, image, description, verification, agent } = property;
 
+  // Add to wishlist functionality
   const handleAddToWishlist = async () => {
-    console.log("Added to wishlist:", id);
     try {
-        const response = await axios.post(
-          `${import.meta.env.VITE_API_URL}/wishlists`,
-          {
-            image,
-            title,
-            location,
-            agent,
-            verification,
-            price: {
-                minPrice,
-                maxPrice
-            },
-
-          }
-        );
-  
-        console.log("Review submitted:", response.data);
-        toast.success("Review submitted successfully!");
-        setReview(""); 
-        refetch(); 
-      } catch (error) {
-        console.error("Error submitting review:", error);
-        toast.error("Failed to submit review. Please try again.");
-      } finally {
-        setIsSubmitting(false);
-      }
+      await axios.post(`${import.meta.env.VITE_API_URL}/wishlists`, {
+        image,
+        title,
+        location,
+        agent,
+        verification,
+        price: { minPrice, maxPrice },
+      });
+      toast.success("Added to wishlist successfully!");
+    } catch (error) {
+      console.error("Error adding to wishlist:", error);
+      toast.error("Failed to add to wishlist. Please try again.");
+    }
   };
 
+  // Submit review functionality
   const handleReviewSubmit = async () => {
     if (!review.trim()) {
       toast.error("Review cannot be empty!");
@@ -69,20 +57,19 @@ const PropertyDetails = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/reviews`,
-        {
-          property_title: title,
-          reviewer_name: user?.displayName,
-          reviewer_image: user?.photoURL,
-          reviewText: review,
-        }
-      );
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, {
+        property_title: title,
+        reviewer_name: user?.displayName,
+        reviewer_image: user?.photoURL,
+        reviewText: review,
+        reviewer_email: user?.email,
+        review_date: new Date().toISOString(), // Include review date
+      });
 
       console.log("Review submitted:", response.data);
       toast.success("Review submitted successfully!");
       setReview(""); 
-      refetch(); 
+      refetch(); // Refresh data after submission
     } catch (error) {
       console.error("Error submitting review:", error);
       toast.error("Failed to submit review. Please try again.");
