@@ -6,7 +6,7 @@ import useRole from "../../hooks/useRole";
 const Profile = () => {
   const { user } = useAuth() ;
   const [role] = useRole()
-  console.log(role)
+//   console.log(role)
   
   return (
     <div className="flex justify-center items-center min-h-[300px] bg-gray-100">

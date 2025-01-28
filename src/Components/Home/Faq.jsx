@@ -1,9 +1,11 @@
 import Container from "../Shared/Container";
+import TitleSubTitle from "../TitleSubTitle";
 
 
 const Faq = () => {
     return (
         <Container>
+            <TitleSubTitle title="Are these your Query" subTitle="get all your answer below"></TitleSubTitle>
             <div className="join join-vertical bg-base-100 w-full">
                 <div className="collapse collapse-arrow join-item border-base-300 border">
                     <input type="radio" name="my-accordion-4" defaultChecked />

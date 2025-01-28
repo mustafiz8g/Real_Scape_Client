@@ -17,10 +17,10 @@ const MyReviews = () => {
       return data;
     },
   });
-  console.log(reviews)
+//   console.log(reviews)
   const reviewss = reviews.filter(review => review.
     reviewer_email === user?.email);
- console.log(reviewss)
+//  console.log(reviewss)
   // Mutation to delete a review
   const deleteMutation = useMutation({
     mutationFn: async (reviewId) => {

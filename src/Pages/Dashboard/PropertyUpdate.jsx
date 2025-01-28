@@ -41,7 +41,7 @@ const PropertyUpdate = () => {
       toast.success('Property updated successfully')
     }
     catch(err){
-      console.log(err)
+    //   console.log(err)
     }
     finally{
       setLoading(false)

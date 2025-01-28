@@ -17,7 +17,7 @@ const Banner = () => {
          <h3 className="text-4xl font-medium">Find Your Dream Home Today! 🌟</h3>
             <h2 className="text-6xl font-medium">Explore Thousands of Properties with Trusted Agents</h2>
             <p>Buy, Sell, Manage – All in One Place! 🏠</p>
-            <Link to= '/allFoods' className="text-lg font-bold btn btn-outline btn-accent">Explore All Items</Link>
+            <Link to= '/allProperties' className="text-lg font-bold btn btn-outline btn-accent">Explore All Property</Link>
          </div>
       </Container>
       

@@ -45,6 +45,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Container from "../Shared/Container";
 import LoadingSpinner from "../Shared/LoadingSpinner";
+import TitleSubTitle from "../TitleSubTitle";
 
 const Review = () => {
   const { data: reviews, isLoading } = useQuery({
@@ -59,6 +60,9 @@ const Review = () => {
 
   return (
     <Container>
+
+        <TitleSubTitle title="Latest User Reviews" subTitle="Hear from our community! Check out the most recent reviews on properties, shared by our trusted users.
+        "></TitleSubTitle>
       {reviews && reviews.length > 0 ? (
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           {reviews.map((review) => (

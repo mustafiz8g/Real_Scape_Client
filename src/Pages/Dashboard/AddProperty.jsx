@@ -47,7 +47,7 @@ const AddProperty = () => {
       toast.success('Property added successfully')
     }
     catch(err){
-      console.log(err)
+    //   console.log(err)
     }
     finally{
       setLoading(false)

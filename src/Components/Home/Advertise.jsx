@@ -6,6 +6,7 @@ import axios from 'axios'
 import LoadingSpinner from '../Shared/LoadingSpinner'
 import Container from '../Shared/Container'
 import Card from './Card'
+import TitleSubTitle from '../TitleSubTitle'
 
 const Advertise = () => {
   const { data :properties, isLoading } = useQuery({
@@ -18,6 +19,9 @@ const Advertise = () => {
   if(isLoading) return <LoadingSpinner />
   return (
     <Container>
+        <TitleSubTitle title='Discover Your Dream Property
+
+' subTitle='Explore verified listings with stunning visuals, prime locations, and flexible price ranges. Click for more details and make it yours today!'></TitleSubTitle>
      {
       properties && properties.length>0
 
