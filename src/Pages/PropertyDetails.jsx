@@ -27,11 +27,37 @@ const PropertyDetails = () => {
 
   if (isLoading) return <LoadingSpinner />;
 
-  const { title, location, minPrice, maxPrice, image, description } = property;
+  const { title, location, minPrice, maxPrice, image, description,verification, agent } = property;
 
   const handleAddToWishlist = async () => {
     console.log("Added to wishlist:", id);
-    // Implement add-to-wishlist functionality here
+    try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/wishlists`,
+          {
+            image,
+            title,
+            location,
+            agent,
+            verification,
+            price: {
+                minPrice,
+                maxPrice
+            },
+
+          }
+        );
+  
+        console.log("Review submitted:", response.data);
+        toast.success("Review submitted successfully!");
+        setReview(""); 
+        refetch(); 
+      } catch (error) {
+        console.error("Error submitting review:", error);
+        toast.error("Failed to submit review. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
   };
 
   const handleReviewSubmit = async () => {

@@ -21,6 +21,7 @@ import AgentRoute from './AgentRoute'
 import PrivateRoute from './PrivateRoute'
 import PropertyDetails from '../Pages/PropertyDetails'
 import AllProperties from '../Pages/AllProperties'
+import Offer from '../Components/Form/Offer'
 
 
 export const router = createBrowserRouter([
@@ -52,12 +53,16 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
       },
       {
+        path: 'offer/:id',
+        element: <Offer></Offer>
+      },
+      {
         path: 'property-bought',
-        element: <PropertyBought></PropertyBought>
+        element: <PrivateRoute><PropertyBought></PropertyBought></PrivateRoute>
       }, 
       {
         path: 'my-reviews',
-        element:<MyReviews></MyReviews>
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path: 'add-property',
