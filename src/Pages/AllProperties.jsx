@@ -26,7 +26,7 @@ const AllProperties = () => {
   });
 
   const handleSearch = () => {
-    refetch(); // Refetch the data based on the updated query
+    refetch(); 
   };
 
   if (isLoading) return <LoadingSpinner />;
@@ -34,7 +34,7 @@ const AllProperties = () => {
   return (
     <Container>
       {/* Search and Sort */}
-      <div className="join">
+      <div className="join flex justify-center">
         <div>
           <div>
             <input
