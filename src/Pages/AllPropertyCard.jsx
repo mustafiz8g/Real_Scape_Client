@@ -27,11 +27,11 @@ const AllPropertyCard = ({ property }) => {
             className="object-cover w-full h-full group-hover:scale-110 transition-transform"
           />
           {/* Optional Verification Badge */}
-          {verification && (
+         
             <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded-md">
-              Verified
+              {verification}
             </div>
-          )}
+         
         </div>
 
         {/* Title */}
@@ -55,8 +55,8 @@ const AllPropertyCard = ({ property }) => {
             className="w-10 h-10 rounded-full border border-gray-300 object-cover"
           />
           <div className="text-sm">
-            <p className="font-medium">{agent.name || 'Unknown Agent'}</p>
-            {verification && <p className="text-blue-500 text-xs">Verified Agent</p>}
+            <p className="font-medium">{agent.name}</p>
+           
           </div>
         </div>
 

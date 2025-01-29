@@ -12,7 +12,7 @@ const Advertise = () => {
   const { data :properties, isLoading } = useQuery({
     queryKey: ['properties'],
     queryFn: async () => {
-      const {data} = await axios(`${import.meta.env.VITE_API_URL}/properties`)
+      const {data} = await axios(`${import.meta.env.VITE_API_URL}/propertiesverified`)
       return data
     }
   })
