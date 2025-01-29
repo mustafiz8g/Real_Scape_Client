@@ -1,46 +1,6 @@
 
 
 
-
-// import { useQuery } from '@tanstack/react-query'
-// import axios from 'axios'
-// import Container from '../Shared/Container'
-// import LoadingSpinner from '../Shared/LoadingSpinner'
-
-// const Review = () => {
-//   const { data :reviews, isLoading } = useQuery({
-//     queryKey: ['reviews'],
-//     queryFn: async () => {
-//       const {data} = await axios(`${import.meta.env.VITE_API_URL}/reviews`)
-//       return data
-//     }
-//   })
-//   if(isLoading) return <LoadingSpinner />
-//   return (
-//     <Container>
-//      {
-//       reviews && reviews.length>0
-
-//       ?   
-//          <div className='pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8'>
-//         {
-//           reviews.map(review => <div key={review._id}></div>)
-//         }
-        
-//       </div>
-//       : 
-      
-//       <h1>No Property Found</h1>
-//      }
-//     </Container>
-//   )
-// }
-
-// export default Review
-
-
-
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Container from "../Shared/Container";
