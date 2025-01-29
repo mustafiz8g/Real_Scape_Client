@@ -70,7 +70,7 @@ const MyAddedProperty = () => {
                 Price: ${property.minPrice?.toLocaleString()} - ${property.maxPrice?.toLocaleString()}
               </p>
               <p className="text-sm text-gray-600">
-                Verified: {property.verification ? "Yes" : "No"}
+                Status: <span className="font-bold"> {property.verification}</span>
               </p>
 
               {/* Agent Information */}
@@ -86,11 +86,13 @@ const MyAddedProperty = () => {
               {/* Action Buttons */}
               <div className="mt-4 flex justify-between gap-2">
                 {/* Update Button */}
-                <Link to={`/property/update/${property._id}`}>
-                <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-                >
-                  Update
-                </button></Link>
+                {property.verification !== "rejected" && (
+                  <Link to={`/property/update/${property._id}`}>
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                      Update
+                    </button>
+                  </Link>
+                )}
 
                 {/* Delete Button */}
                 <button

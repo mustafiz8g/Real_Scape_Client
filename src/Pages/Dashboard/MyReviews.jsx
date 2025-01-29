@@ -46,8 +46,8 @@ const MyReviews = () => {
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-4">My Reviews</h1>
 
-      {reviews.length === 0 ? (
-        <p className="text-gray-600 text-center">You have not left any reviews yet.</p>
+      {reviewss.length === 0 ? (
+        <p className="">You have not left any reviews yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviewss.map((review) => (
