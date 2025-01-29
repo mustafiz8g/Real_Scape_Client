@@ -1,15 +1,11 @@
-
-
-
-
-
-
+import useRole from "../hooks/useRole";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const WishlistCard = ({ wishlist, onRemove }) => {
-    const { _id, image, title, location, agent, price } = wishlist;
-
+    const [role] = useRole();
+    const { _id, image, title, location, agent, price, verification } = wishlist;
+  
     // Delete wishlist item function
     const deleteWishlistItem = async () => {
         onRemove(_id);
@@ -35,6 +31,7 @@ const WishlistCard = ({ wishlist, onRemove }) => {
                 {/* Title */}
                 <h3 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition">
                     {title}
+                    <span className="text-blue-600 badge">{verification}</span>
                 </h3>
 
                 {/* Location */}
@@ -58,10 +55,16 @@ const WishlistCard = ({ wishlist, onRemove }) => {
                 {/* Action Buttons */}
                 <div className="space-y-1.5">
                     {/* Make an Offer Button */}
-                    <Link to={`/offer/${_id}`}>
-                        <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition">
-                            Make an Offer
-                        </button></Link>
+                    {role === 'admin' || role === 'agent' ? (
+                        <p className="text-red-500 font-semibold">Admins and Agents are not allowed to buy.</p>
+                    ) : (
+                        <Link to={`/offer/${_id}`}>
+                            <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition">
+                                Make an Offer
+                            </button>
+                        </Link>
+                    )}
+                    
                     {/* Remove Button */}
                     <button
                         className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
@@ -85,6 +88,7 @@ WishlistCard.propTypes = {
             name: PropTypes.string.isRequired,
             image: PropTypes.string.isRequired,
         }).isRequired,
+        verification: PropTypes.string.isRequired,
         price: PropTypes.shape({
             minPrice: PropTypes.number.isRequired,
             maxPrice: PropTypes.number.isRequired,

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Card = ({ property }) => {
-    const {_id, title, location, minPrice, maxPrice, image } = property;
+    const {_id, title, location, minPrice, maxPrice, image,verification } = property;
   
     return (
       <div className="col-span-1 shadow-xl p-3 rounded-xl group cursor-pointer">
@@ -18,7 +18,9 @@ const Card = ({ property }) => {
             />
           </div>
           {/* Title */}
-          <div className="font-semibold text-lg">{title}</div>
+          <div className="font-semibold text-lg">{title}
+           <div className="badge badge-sm badge-secondary">{verification}</div>
+          </div>
           {/* Location */}
           <div className="text-gray-600">Location: {location}</div>
           {/* Price Range */}

@@ -2,7 +2,6 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import Container from '../../Components/Shared/Container';
 
-const API_URL = import.meta.env.VITE_API_URL;
 
 const fetchProperties = async () => {
     const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/properties`);
