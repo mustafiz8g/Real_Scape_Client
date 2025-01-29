@@ -7,8 +7,11 @@ import Container from "../Components/Shared/Container";
 import LoadingSpinner from "../Components/Shared/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 import toast from "react-hot-toast";
+import useRole from "../hooks/useRole";
 
 const PropertyDetails = () => {
+  const [role] = useRole();
+  console.log(role)
   const { user } = useAuth();
   const { id } = useParams();
   const { data: property = {}, isLoading, refetch } = useQuery({
@@ -111,13 +114,19 @@ const PropertyDetails = () => {
               {description || "No description available for this property."}
             </p>
 
-            {/* Add to Wishlist Button */}
-            <button
-              onClick={handleAddToWishlist}
-              className="px-6 py-3 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition"
-            >
-              Add to Wishlist
-            </button>
+          {/* Add to Wishlist Button */}
+<button
+  onClick={handleAddToWishlist}
+  disabled={role === "admin" || role === "agent"}
+  className={`px-6 py-3 rounded-xl shadow-md transition ${
+    role === "admin" || role === "agent"
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-blue-600 text-white hover:bg-blue-700"
+  }`}
+  title={role === "admin" || role === "agent" ? "Admin and Agent are not allowed to buy" : ""}
+>
+  Add to Wishlist
+</button>
           </div>
         </div>
 
@@ -135,12 +144,17 @@ const PropertyDetails = () => {
             disabled={isSubmitting}
           ></textarea>
           <button
-            onClick={handleReviewSubmit}
-            className="px-6 py-3 bg-green-600 text-white rounded-xl shadow-md hover:bg-green-700 transition"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit Review"}
-          </button>
+  onClick={handleReviewSubmit}
+  disabled={isSubmitting || role === "admin" || role === "agent"}
+  className={`px-6 py-3 rounded-xl shadow-md transition ${
+    role === "admin" || role === "agent"
+      ? "bg-gray-400 cursor-not-allowed"
+      : "bg-green-600 text-white hover:bg-green-700"
+  }`}
+  title={role === "admin" || role === "agent" ? "Admin and Agent are not allowed to submit reviews" : ""}
+>
+  {isSubmitting ? "Submitting..." : "Submit Review"}
+</button>
         </div>
       </div>
     </Container>
