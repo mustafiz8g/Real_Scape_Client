@@ -55,6 +55,7 @@ const RequestedProperty = () => {
                         <thead className="bg-blue-600 text-white">
                             <tr>
                                 <th className="py-3 px-4">Title</th>
+                                <th className="py-3 px-4">Location</th>
                                 <th className="py-3 px-4">Buyer Email</th>
                                 <th className="py-3 px-4">Buyer Name</th>
                                 <th className="py-3 px-4">Offered Price</th>
@@ -66,6 +67,7 @@ const RequestedProperty = () => {
                             {offers.map(offer => (
                                 <tr key={offer._id} className="border-b hover:bg-gray-100 transition">
                                     <td className="py-3 px-4">{offer.title}</td>
+                                    <td className="py-3 px-4">{offer.location}</td>
                                     <td className="py-3 px-4">{offer.userEmail}</td>
                                     <td className="py-3 px-4">{offer.userName}</td>
                                     <td className="py-3 px-4">${offer.amount}</td>

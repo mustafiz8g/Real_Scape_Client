@@ -63,6 +63,7 @@ const PropertyDetails = () => {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/reviews`, {
         property_title: title,
         reviewer_name: user?.displayName,
+        agentName: agent?.name,
         reviewer_image: user?.photoURL,
         reviewText: review,
         reviewer_email: user?.email,

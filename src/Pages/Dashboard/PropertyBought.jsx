@@ -13,13 +13,15 @@ const PropertyBought = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <h2 className="text-2xl font-semibold mb-4">Properties You Offered</h2>
+      <h2 className="text-2xl font-semibold mb-4">Properties You Bought</h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {offers.map((offer) => (
           <div key={offer._id} className="p-4 border rounded-lg shadow-lg">
             <h3 className="text-xl font-bold">{offer.title}</h3>
             <p className="text-gray-600">Agent: {offer.agentName}</p>
             <p className="text-gray-600">Offered Amount: ${offer.amount}</p>
+            <p className="text-gray-600">Location: {offer?.location}</p> {/* Added location */}
+            {offer.image && <img src={offer.image} alt={offer.title} className="w-full h-40 object-cover mt-4" />} {/* Added image */}
             <p className={`font-semibold ${offer.boughtStatus === "accepted" ? "text-green-500" : "text-yellow-500"}`}>
               Status: {offer.boughtStatus}
             </p>

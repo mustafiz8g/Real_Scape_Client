@@ -31,8 +31,8 @@ const ManageProperties = () => {
                         <tr>
                             <th className="py-3 px-4">Title</th>
                             <th className="py-3 px-4">Location</th>
-                            <th className="py-3 px-4">Agent</th>
-                            <th className="py-3 px-4">Email</th>
+                            <th className="py-3 px-4">Agent Name</th>
+                            <th className="py-3 px-4">Agent Email</th>
                             <th className="py-3 px-4">Price Range</th>
                             <th className="py-3 px-4">Status</th>
                         </tr>

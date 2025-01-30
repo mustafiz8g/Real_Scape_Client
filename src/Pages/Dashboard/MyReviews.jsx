@@ -64,15 +64,13 @@ const MyReviews = () => {
                 <div>
                   <h2 className="font-bold text-lg">{review.property_title || "Untitled Review"}</h2>
                   <p className="text-sm text-gray-500">
-                    <strong>Reviewer:</strong> {review.reviewer_name || "N/A"}
+                    <strong>Agent:</strong> {review.agentName || "N/A"}
                   </p>
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-2">{review.reviewText || "No review text provided."}</p>
-              <p className="text-sm text-gray-500">
-                <strong>Rating:</strong> {review.rating || "N/A"} / 5
-              </p>
+              <p className="text-gray-600 mb-2">Review: {review.reviewText || "No review text provided."}</p>
+             
               <p className="text-sm text-gray-500 mb-4">
                 <strong>Date:</strong>{" "}
                 {new Date(review.date).toLocaleDateString() || "Unknown"}

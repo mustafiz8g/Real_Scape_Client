@@ -65,6 +65,8 @@ const Offer = () => {
 
         userEmail: user?.email,
         boughtStatus: "pending",
+        image,
+        location
       });
 
       toast.success("Offer submitted successfully!");
