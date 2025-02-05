@@ -1,42 +1,137 @@
-# Real Scape: a Real state platform
+🏡 Real Estate Platform
+An advanced MERN-stack-based real estate marketplace where users can buy, sell, wishlist, and review properties. Agents can manage their listings, and admins have full control over platform operations.
+🌐 Live Demo
+🔗 Live Site: [Your Live Site URL Here]
+🔗 Client Repository: [GitHub Client Repo URL]
+🔗 Server Repository: [GitHub Server Repo URL]
 
-A MERN stack-based real estate platform that allows users to browse and wishlist properties, agents to manage property listings, and admins to oversee platform operations.
+📜 Admin Credentials
+Admin Username: admin@example.com
+Admin Password: admin123
+📖 Table of Contents
+Features
+Technologies Used
+Installation & Setup
+Project Screenshots
+Environment Variables
+API Endpoints
+Contributors
+License
+✨ Features
+User Roles: User, Agent, Admin.
+Secure Authentication: Email/password authentication with JWT protection & Google sign-in.
+Property Listings: Agents can add properties, which require admin verification.
+Wishlist & Purchase: Users can wishlist properties and make purchase offers.
+Property Reviews: Users can review properties & admins can manage reviews.
+Real-Time Notifications: Toast messages for CRUD operations & authentication.
+Agent Dashboard: Agents can manage their properties and view transaction history.
+Admin Panel: Admins can manage users, properties, and reviews.
+Search & Filter: Users can search properties based on location and sort by price.
+Responsive Design: Fully optimized for mobile, tablet, and desktop views.
+🛠️ Technologies Used
+Frontend (Client)
+React.js (Vite)
+React Router
+Tailwind CSS
+Firebase Authentication
+TanStack Query (React Query)
+Axios
+SweetAlert2 / Toast Notifications
+Backend (Server)
+Node.js
+Express.js
+MongoDB (Mongoose)
+JSON Web Token (JWT)
+Cloudinary (for Image Uploads)
+Other Tools
+Stripe Payment Gateway
+Dotenv for Environment Variables
+⚙️ Installation & Setup
+1️⃣ Clone the Repository
+bash
+Copy
+Edit
+git clone https://github.com/yourusername/real-estate-client.git
+git clone https://github.com/yourusername/real-estate-server.git
+2️⃣ Install Dependencies
+Frontend:
+bash
+Copy
+Edit
+cd real-estate-client
+npm install
+Backend:
+bash
+Copy
+Edit
+cd real-estate-server
+npm install
+3️⃣ Configure Environment Variables
+Create a .env file in both client and server directories with the required API keys.
 
-## Live Site
-** https://realscape-c226c.web.app/
+Frontend (real-estate-client/.env)
+plaintext
+Copy
+Edit
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_messaging_sender_id
+VITE_FIREBASE_APP_ID=your_firebase_app_id
+VITE_BACKEND_URL=http://localhost:5000
+Backend (real-estate-server/.env)
+plaintext
+Copy
+Edit
+MONGO_URI=your_mongodb_connection_uri
+JWT_SECRET=your_jwt_secret
+STRIPE_SECRET_KEY=your_stripe_secret_key
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+4️⃣ Start the Development Servers
+Frontend:
+bash
+Copy
+Edit
+npm run dev
+Backend:
+bash
+Copy
+Edit
+npm run start
+🖼️ Project Screenshots
+Add screenshots here to showcase UI and features.
 
-## Key Features
-1. **Home Page**:
-   - Navbar with routes for `Home`, `All Properties`, `Dashboard`, and `Login`.
-   - Banner, advertisement section, and latest user reviews.
+🔌 API Endpoints
+User Authentication
+Method	Endpoint	Description
+POST	/api/auth/signup	Register a new user
+POST	/api/auth/login	User login & JWT generation
+GET	/api/auth/user	Get logged-in user details
+Properties
+Method	Endpoint	Description
+GET	/api/properties	Get all verified properties
+POST	/api/properties	Add a new property (Agent only)
+GET	/api/properties/:id	Get property details
+DELETE	/api/properties/:id	Delete property (Agent/Admin)
+Wishlist & Purchase
+Method	Endpoint	Description
+POST	/api/wishlist	Add a property to wishlist
+DELETE	/api/wishlist/:id	Remove a property from wishlist
+POST	/api/purchase	Make an offer on a property
+GET	/api/purchase	Get all purchase history
+Reviews
+Method	Endpoint	Description
+POST	/api/reviews	Add a review to a property
+GET	/api/reviews/:propertyId	Get reviews for a property
+DELETE	/api/reviews/:id	Delete a review (Admin/User)
+🤝 Contributors
+👤 Your Name
+📧 Email: [your email]
+🔗 GitHub: [your GitHub profile]
+🔗 LinkedIn: [your LinkedIn profile]
 
-2. **All Properties Page** 🔒:
-   - View admin-verified properties with search and sort functionality.
-
-3. **Property Details Page** 🔒:
-   - Displays detailed property info, reviews, and an "Add to Wishlist" feature.
-
-4. **User Dashboard** 🔒:
-   - **My Profile**: View user info.
-   - **Wishlist**: Manage wishlisted properties.
-   - **Property Bought**: View purchased properties with status.
-   - **My Reviews**: Manage submitted reviews.
-
-5. **Agent Dashboard** 🔒:
-   - **Profile**: View agent info.
-   - **Add Property**: Add new listings.
-   - **My Added Properties**: Manage properties with update and delete options.
-   - **Requested Properties**: Manage offers from users.
-
-6. **Authentication**:
-   - Email/password and Google login with role-based access control.
-   - JWT-based private routes for secure navigation.
-
-7. **Responsive Design**:
-   - Fully optimized for mobile, tablet, and desktop.
-
-8. **Additional Features**:
-   - Toast notifications for CRUD operations.
-   - Secure API keys using environment variables.
-
----
+📝 License
+This project is licensed under the MIT License.
