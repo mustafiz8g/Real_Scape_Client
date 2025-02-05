@@ -1,4 +1,4 @@
-Here's the **properly formatted README.md** file using **Markdown syntax** to ensure it appears correctly when pasted into GitHub.  
+
 
 ```md
 # 🏡 Real Estate Platform
