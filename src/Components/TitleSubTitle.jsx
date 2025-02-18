@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const TitleSubTitle = ({ title, subTitle }) => {
   return (
-    <div className="flex flex-col justify-center items-center mx-auto mt-4 mb-9 space-y-3 p-6 rounded-xl shadow-md">
+    <div className="flex flex-col justify-center items-center mx-auto mt-4 mb-9 space-y-3 p-6 rounded-xl shadow-sm">
       {/* Title with Gradient Text */}
       <h1 
         className="text-3xl sm:text-4xl font-bold uppercase tracking-wide bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text"

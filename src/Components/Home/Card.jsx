@@ -5,7 +5,7 @@ const Card = ({ property }) => {
   const { _id, title, location, minPrice, maxPrice, image, verification } = property;
 
   return (
-    <div className="col-span-1 shadow-xl p-3 rounded-xl group cursor-pointer flex flex-col h-full transition transform hover:-translate-y-2 ">
+    <div className="col-span-1 shadow-sm p-3 rounded-xl group cursor-pointer flex flex-col h-full transition transform hover:-translate-y-2 ">
       <div className="flex flex-col gap-2 w-full flex-grow">
         {/* Image */}
         <div className="aspect-square w-full relative overflow-hidden rounded-xl">
@@ -23,11 +23,11 @@ const Card = ({ property }) => {
         </div>
 
         {/* Location */}
-        <div className="text-[#6B7280] font-medium">📍 {location}</div>
+        <div className="text-[#6B7280] font-medium"> {location}</div>
 
         {/* Price Range */}
         <div className="font-semibold text-[#4A5568] text-lg">
-          💰 Price Range: <span className="text-green-600">${minPrice} - ${maxPrice}</span>
+           <span className="text-green-600">${minPrice} - ${maxPrice}</span>
         </div>
       </div>
 

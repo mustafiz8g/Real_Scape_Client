@@ -1,6 +1,3 @@
-
-
-
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Container from "../Shared/Container";
@@ -20,42 +17,39 @@ const Review = () => {
 
   return (
     <Container>
+      {/* Section Title */}
+      <TitleSubTitle
+        title="Latest User Reviews"
+        subTitle="Hear from our community! Check out the most recent reviews shared by our trusted users."
+      />
 
-        <TitleSubTitle title="Latest User Reviews" subTitle="Hear from our community! Check out the most recent reviews on properties, shared by our trusted users.
-        "></TitleSubTitle>
       {reviews && reviews.length > 0 ? (
-        <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+        <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
-            <div
-              key={review._id}
-              className=" shadow-lg rounded-xl p-4 space-y-4"
-            >
-              {/* Reviewer Image */}
-              <div className="flex items-center gap-4">
+            <div key={review._id} className=" shadow-sm rounded-xl p-6 space-y-3 text-center">
+              
+              {/* Profile Image & Info */}
+              <div className="flex flex-col items-center">
                 <img
                   src={review.reviewer_image || "https://via.placeholder.com/50"}
                   alt={review.reviewer_name || "Reviewer"}
-                  className="w-12 h-12 rounded-full object-cover border border-base-100"
+                  className="w-14 h-14 rounded-full object-cover border border-gray-200"
                 />
-                <div>
-                  <h3 className="text-lg font-semibold ">
-                    {review.reviewer_name || "Anonymous"}
-                  </h3>
-                  <p className="text-sm ">
-                    {review.property_title || "Untitled Property"}
-                  </p>
-                </div>
+                <h3 className="text-lg font-semibold mt-2">{review.reviewer_name || "Anonymous"}</h3>
+                <p className="text-sm text-gray-500">{review.role || "Happy Customer"}</p>
               </div>
 
               {/* Review Text */}
-              <p className=" text-sm">{review.reviewText}</p>
+              <p className="text-gray-600 text-sm">{review.reviewText}</p>
+
+              {/* Star Rating */}
+              <div className="text-yellow-500 text-lg">⭐⭐⭐⭐⭐</div>
+
             </div>
           ))}
         </div>
       ) : (
-        <h1 className="text-center text-xl font-semibold ">
-          No Reviews Found
-        </h1>
+        <h1 className="text-center text-xl font-semibold">No Reviews Found</h1>
       )}
     </Container>
   );
