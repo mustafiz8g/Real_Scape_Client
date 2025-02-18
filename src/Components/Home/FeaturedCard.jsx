@@ -7,15 +7,15 @@ const FeaturedCard = ({ propertyff }) => {
   const { _id, title, location, minPrice, image, beds, baths, area, agentImage } = propertyff;
 
   return (
-    <div className="flex  bg-white shadow-md rounded-lg overflow-hidden max-w-xl">
+    <div className="flex flex-col md:flex-row  shadow-sm rounded-lg overflow-hidden max-w-xl h-[280px]">
       {/* Left: Image Section */}
-      <div className="w-2/5 relative">
+      <div className="flex-1 relative">
         <img src={image} alt={title} className="w-full h-full object-cover" />
-        <img src={agentImage} alt="Agent" className="w-10 h-10 rounded-full absolute bottom-2 left-2 border-2 border-white" />
+        <img src={agentImage} alt="Agent" className="w-10 h-10 rounded-full absolute bottom-2 left-2 border-2 border-blue" />
       </div>
 
       {/* Right: Content Section */}
-      <div className="w-3/5 p-4 flex flex-col justify-between">
+      <div className="flex-1 p-4 flex flex-col justify-between">
         <div>
           <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
           <p className="text-blue-600 font-bold">${minPrice}</p>

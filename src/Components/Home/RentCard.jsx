@@ -7,7 +7,7 @@ const Card = ({ propertyy }) => {
   const { _id, title, location, price, image, bedrooms, bathrooms, size, agent, isFeatured, isActive, isRental } = propertyy;
 
   return (
-    <div className=" shadow-lg rounded-xl overflow-hidden transition hover:-translate-y-2 cursor-pointer">
+    <div className=" shadow-sm rounded-xl overflow-hidden transition hover:-translate-y-2 cursor-pointer">
       
       {/* Image Section */}
       <div className="relative">
