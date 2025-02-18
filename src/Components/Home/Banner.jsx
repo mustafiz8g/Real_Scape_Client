@@ -6,7 +6,7 @@ import banner from '../../assets/cover.png'
 import Container from "../Shared/Container";
 const Banner = () => {
     return (
-      <Container>
+     
           <div className='
         
         bg-no-repeat  bg-cover h-[700px] relative flex flex-col items-center justify-center *:text-white space-y-3 *:text-center' 
@@ -19,7 +19,7 @@ const Banner = () => {
             <p>Buy, Sell, Manage – All in One Place! 🏠</p>
             <Link to= '/allProperties' className="text-lg font-bold btn btn-outline btn-accent">Explore All Property</Link>
          </div>
-      </Container>
+   
       
     );
 };

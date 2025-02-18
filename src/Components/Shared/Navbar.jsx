@@ -4,6 +4,8 @@ import { FaBars } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useRole from "../../hooks/useRole";
 import useAuth from "../../hooks/useAuth";
+import './Navbar.css'
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -13,17 +15,18 @@ const Navbar = () => {
   // const defaultPhoto = "https://i.ibb.co.com/TTNz5Yp/Screenshot-2024-12-22-103839.png"
 
 
-
+  
   const navOptions = < >
     <li><NavLink className='font-bold ' to='/'>Home</NavLink></li>
     <li><NavLink className='font-bold ' to='/allProperties'>All Properties</NavLink></li>
+    <li><ThemeToggle></ThemeToggle></li>
   </>
 
 
 
-  const navOptions2 = <>
+const navOptions2 = <>
     {
-      role === 'customer' && <>
+        role === 'customer' && <>
         <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
 
         <li><NavLink className='font-bold' to='/wishlist'>Wishlist</NavLink></li>
@@ -34,7 +37,7 @@ const Navbar = () => {
 
     {/* agent dashboard  */}
     {
-      role === 'agent' && <>
+        role === 'agent' && <>
         <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
 
         <li><NavLink className='font-bold ' to='/add-property'>Add Property</NavLink></li>
@@ -46,7 +49,7 @@ const Navbar = () => {
     {/* admin profile  */}
 
     {
-      role === 'admin' && <>
+        role === 'admin' && <>
         <li><NavLink className='font-bold ' to='/profile'>Profile</NavLink></li>
 
         <li><NavLink className='font-bold ' to='/manage-properties'>Manage Properties</NavLink></li>
@@ -60,14 +63,14 @@ const Navbar = () => {
 
 
 
-  return (
-    <div className="z-50 sticky top-0 navBar  ">
-      <div className="w-11/12 mx-auto navbar flex justify-between ">
+return (
+    <div className="z-50 sticky py-1.5 top-0 bg-[#D1F8EF] NavBar ">
+      <div className="w-11/12 mx-auto  flex justify-between items-center">
 
-        <div className="first">
+        <div className="first flex">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
-              <FaBars className="text-xl" />
+              <FaBars className="text-lg" />
 
             </div>
             <ul
@@ -76,7 +79,7 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
-          <Link to='/' className=" text-3xl font-bold">REAL <span className="text-blue-600 font-bold">SCAPE</span></Link>
+          <Link to='/' className=" text-3xl text-black font-bold">REAL <span className="text-blue-600 font-bold">SCAPE</span></Link>
         </div>
         <div className="flex justify-between items-center">
           <div className="second hidden md:flex">
@@ -97,7 +100,7 @@ const Navbar = () => {
                       <div className="flex justify-center items-center gap-2">
 
                         <div className="w-12 h-12">
-                          <img title={user.displayName} className="w-full h-full  object-contain rounded-full border  border-white border-2 hover:border-orange-400" src={user?.photoURL} alt="profile" />
+                          <img title={user.displayName} className="w-full h-full  object-contain rounded-full border  border-white border-2 hover:border-[#155dfc]" src={user?.photoURL} alt="profile" />
                         </div>
                       </div>
 
@@ -112,9 +115,9 @@ const Navbar = () => {
 
                   :
                   <div>
-                    <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/login' >Login</Link>
-                    <span> / </span>
-                    <Link className="hover:underline  decoration-2 underline-offset-2 font-bold" to='/signup' >Register</Link>
+                    <Link className="hover:underline  decoration-2 underline-offset-2 font-bold text-black" to='/login' >Login</Link>
+                    <span className="text-black"> / </span>
+                    <Link className="hover:underline  decoration-2 underline-offset-2 font-bold text-black" to='/signup' >Register</Link>
                   </div>
               }
 

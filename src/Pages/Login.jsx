@@ -56,10 +56,10 @@ const Login = () => {
 
   return (
     <div className="flex justify-center min-h-[800px] items-center ">
-      <div className="flex flex-col max-w-md p-8 bg-white shadow-lg rounded-xl">
+      <div className="flex flex-col max-w-md p-8  border shadow-lg rounded-xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-extrabold text-blue-600">Welcome Back</h1>
-          <p className="text-gray-600">Log in to access your account</p>
+          <p className="">Log in to access your account</p>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -68,7 +68,7 @@ const Login = () => {
           <div className="space-y-4">
             {/* Email Field */}
             <div>
-              <label htmlFor="email" className=" mb-1 text-sm font-semibold text-gray-600">
+              <label htmlFor="email" className=" mb-1 text-sm font-semibold ">
                 Email Address
               </label>
               <input
@@ -77,8 +77,8 @@ const Login = () => {
                 id="email"
                 placeholder="Enter your email"
                 required
-                className={`w-full px-4 py-2 border rounded-lg ${
-                  errors.email ? 'border-red-500' : 'border-gray-300'
+                className={`w-full px-4 py-2  rounded-lg ${
+                  errors.email ? 'border-red-500' : ''
                 } focus:outline-none focus:ring-2 ${
                   errors.email ? 'focus:ring-red-400' : 'focus:ring-blue-500'
                 }`}
@@ -87,7 +87,7 @@ const Login = () => {
             </div>
             {/* Password Field */}
             <div>
-              <label htmlFor="password" className="block mb-1 text-sm font-semibold text-gray-600">
+              <label htmlFor="password" className="block mb-1 text-sm font-semibold ">
                 Password
               </label>
               <input
@@ -97,7 +97,7 @@ const Login = () => {
                 placeholder="*******"
                 required
                 className={`w-full px-4 py-2 border rounded-lg ${
-                  errors.password ? 'border-red-500' : 'border-gray-300'
+                  errors.password ? 'border-red-500' : ''
                 } focus:outline-none focus:ring-2 ${
                   errors.password ? 'focus:ring-red-400' : 'focus:ring-blue-500'
                 }`}
@@ -110,7 +110,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full py-3  bg-blue-500 rounded-lg hover:bg-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Log In
             </button>
@@ -127,17 +127,17 @@ const Login = () => {
         {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-1 h-px bg-gray-300"></div>
-          <p className="px-3 text-sm text-gray-500">or</p>
+          <p className="px-3 text-sm ">or</p>
           <div className="flex-1 h-px bg-gray-300"></div>
         </div>
 
         {/* Google Login */}
         <div
           onClick={handleGoogleSignIn}
-          className="flex justify-center items-center space-x-3 border py-2 px-4 rounded-lg cursor-pointer hover:bg-gray-100"
+          className="flex justify-center items-center space-x-3 border py-2 px-4 rounded-lg cursor-pointer hover:bg-[#155dfc]"
         >
           <FcGoogle size={28} />
-          <p className="text-gray-700 font-medium">Sign in with Google</p>
+          <p className="hover:bg-[#155dfc] font-medium">Sign in with Google</p>
         </div>
 
         {/* Sign Up Redirect */}

@@ -28,32 +28,32 @@ const Review = () => {
           {reviews.map((review) => (
             <div
               key={review._id}
-              className="bg-white shadow-lg rounded-xl p-4 space-y-4"
+              className=" shadow-lg rounded-xl p-4 space-y-4"
             >
               {/* Reviewer Image */}
               <div className="flex items-center gap-4">
                 <img
                   src={review.reviewer_image || "https://via.placeholder.com/50"}
                   alt={review.reviewer_name || "Reviewer"}
-                  className="w-12 h-12 rounded-full object-cover border border-gray-300"
+                  className="w-12 h-12 rounded-full object-cover border border-base-100"
                 />
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold ">
                     {review.reviewer_name || "Anonymous"}
                   </h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm ">
                     {review.property_title || "Untitled Property"}
                   </p>
                 </div>
               </div>
 
               {/* Review Text */}
-              <p className="text-gray-700 text-sm">{review.reviewText}</p>
+              <p className=" text-sm">{review.reviewText}</p>
             </div>
           ))}
         </div>
       ) : (
-        <h1 className="text-center text-xl font-semibold text-gray-700">
+        <h1 className="text-center text-xl font-semibold ">
           No Reviews Found
         </h1>
       )}

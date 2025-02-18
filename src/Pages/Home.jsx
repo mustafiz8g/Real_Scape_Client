@@ -8,7 +8,7 @@ import Top from '../Components/Home/Top'
 
 const Home = () => {
   return (
-    <div>
+    <div >
       <Helmet>
         <title> Real-Scape | Home </title>
       </Helmet>

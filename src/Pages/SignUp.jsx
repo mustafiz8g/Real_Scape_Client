@@ -59,11 +59,11 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-white shadow-md">
+    <div className="flex justify-center items-center min-h-screen ">
+      <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 border shadow-md">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl font-bold text-blue-600">Sign Up</h1>
-          <p className="text-sm text-gray-500">Welcome to RealScape</p>
+          <p className="text-sm ">Welcome to RealScape</p>
         </div>
         <form
           onSubmit={handleSubmit}
@@ -75,9 +75,10 @@ const SignUp = () => {
               <input
                 type="text"
                 name="name"
+                
                 id="name"
                 placeholder="Enter Your Name Here"
-                className="w-full px-3 py-2 border rounded-md focus:outline-blue-500 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md   focus:outline-blue-500"
               />
             </div>
             <div>
@@ -98,7 +99,7 @@ const SignUp = () => {
                 id="email"
                 required
                 placeholder="Enter Your Email Here"
-                className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-900 focus:outline-blue-500"
+                className="w-full px-3 py-2 border rounded-md   focus:outline-blue-500"
               />
             </div>
             <div>
@@ -109,25 +110,25 @@ const SignUp = () => {
                 id="password"
                 required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-900 focus:outline-blue-500"
+                className="w-full px-3 py-2 border rounded-md t focus:outline-blue-500"
               />
             </div>
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600"
+            className="w-full bg-blue-500  py-3 rounded-md hover:bg-blue-600"
           >
             Sign Up
           </button>
         </form>
         <div className="flex items-center pt-4 space-x-1">
-          <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+          <div className="flex-1 h-px sm:w-16 "></div>
           <p className="px-3 text-sm text-gray-500">Signup with social accounts</p>
-          <div className="flex-1 h-px sm:w-16 bg-gray-300"></div>
+          <div className="flex-1 h-px sm:w-16 "></div>
         </div>
         <div
           onClick={handleGoogleSignIn}
-          className="flex justify-center items-center space-x-2 border p-2 rounded-md cursor-pointer hover:bg-gray-100"
+          className="flex justify-center items-center space-x-2 border p-2 rounded-md cursor-pointer hover:bg-[#155dfc] "
         >
           <FaGoogle />
           <p>Continue with Google</p>
