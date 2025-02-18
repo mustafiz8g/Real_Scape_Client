@@ -1,20 +1,12 @@
 
 
-```md
-# 🏡 Real Estate Platform
+# 🏡Real-Scape: a Real Estate Platform
 
 ### An advanced MERN-stack-based real estate marketplace where users can buy, sell, wishlist, and review properties. Agents can manage their listings, and admins have full control over platform operations.
 
-## 🌐 Live Demo
+## 🌐 Live Demo https://realscape-c226c.web.app/
 
-- **Live Site:** [Your Live Site URL Here]  
-- **Client Repository:** [GitHub Client Repo URL]  
-- **Server Repository:** [GitHub Server Repo URL]  
-
-## 📜 Admin Credentials
-
-- **Admin Username:** `admin@example.com`
-- **Admin Password:** `admin123`
+- Server Repository: https://github.com/mustafiz8g/Real_Scape_Server
 
 ---
 
@@ -74,26 +66,44 @@
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/real-estate-client.git
-git clone https://github.com/yourusername/real-estate-server.git
+git clone https://github.com/yourusername/real-scape-client.git
+git clone https://github.com/yourusername/real-scape-server.git
 ```
 
 ### **2️⃣ Install Dependencies**
+ "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "@headlessui/react": "^2.2.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@tanstack/react-query": "^5.64.2",
+    "axios": "^1.7.9",
+    "firebase": "^11.2.0",
+    "localforage": "^1.10.0",
+    "match-sorter": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet-async": "^2.0.5",
+    "react-hot-toast": "^2.5.1",
+    "react-icons": "^5.4.0",
+    "react-router-dom": "^7.1.3",
+    "react-spinners": "^0.15.0",
+    "sort-by": "^0.0.2",
+    "sweetalert2": "^11.15.10",
+    "swiper": "^11.2.1"
 #### Frontend:
 ```bash
-cd real-estate-client
+cd real-scape-client
 npm install
 ```
 #### Backend:
 ```bash
-cd real-estate-server
+cd real-scape-server
 npm install
 ```
 
 ### **3️⃣ Configure Environment Variables**
 Create a `.env` file in both **client** and **server** directories with the required API keys.
 
-#### **Frontend (`real-estate-client/.env`)**
+#### **Frontend (`real-scape-client/.env`)**
 ```plaintext
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
@@ -104,7 +114,7 @@ VITE_FIREBASE_APP_ID=your_firebase_app_id
 VITE_BACKEND_URL=http://localhost:5000
 ```
 
-#### **Backend (`real-estate-server/.env`)**
+#### **Backend (`real-scape-server/.env`)**
 ```plaintext
 MONGO_URI=your_mongodb_connection_uri
 JWT_SECRET=your_jwt_secret
@@ -168,25 +178,10 @@ _Add screenshots here to showcase UI and features._
 
 ## 🤝 Contributors
 
-👤 **Your Name**  
-📧 Email: [your email]  
-🔗 GitHub: [your GitHub profile]  
-🔗 LinkedIn: [your LinkedIn profile]  
+👤 **Email**  
+📧 Email: mustafizur8g@gamil.com
+
 
 ---
 
-## 📝 License
 
-This project is licensed under the **MIT License**.
-
----
-
-### ✅ How to Ensure Correct Formatting on GitHub:
-- Copy and **paste the text** directly into `README.md`.
-- Ensure your `.md` file is named exactly **README.md**.
-- Use **GitHub preview mode** before committing.
-
-🚀 Now, when you paste this into GitHub, it will display **perfectly** with proper bullet points, headings, and tables. 🚀
-```  
-
-This is **100% GitHub-ready**! Try it out, and let me know if you need any modifications. 🎯
