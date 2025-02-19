@@ -38,13 +38,13 @@ const AllPropertyCard = ({ property }) => {
         <h3 className="font-semibold text-xl truncate">{title}</h3>
 
         {/* Location */}
-        <p className="text-gray-600 text-sm">
-          <span className="font-semibold">Location:</span> {location}
+        <p className=" text-sm">
+          <span className="font-semibold"></span> {location}
         </p>
 
         {/* Price Range */}
-        <p className="font-semibold text-lg text-gray-800">
-          <span className="text-green-600">Price Range:</span> ${minPrice} - ${maxPrice}
+        <p className="font-semibold text-lg text-green-600 text-gray-800">
+           ${minPrice} - ${maxPrice}
         </p>
 
         {/* Agent Information */}

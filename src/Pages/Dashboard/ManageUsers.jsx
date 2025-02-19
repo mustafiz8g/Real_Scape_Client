@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import Container from '../../Components/Shared/Container';
+import TitleSubTitle from '../../Components/TitleSubTitle';
 
 const ManageUsers = () => {
     const [users, setUsers] = useState([]);
@@ -61,11 +62,11 @@ const ManageUsers = () => {
     return (
        <Container>
          <div className="p-6">
-            <h2 className="text-3xl font-semibold mb-6">Manage Users</h2>
-            <div className="overflow-x-auto shadow-md rounded-lg border border-gray-200">
+            <TitleSubTitle title='Manage Users'></TitleSubTitle>
+            <div className="overflow-x-auto shadow-md rounded-lg border ">
                 <table className="min-w-full table-auto">
                     <thead>
-                        <tr className="bg-blue-500 text-white">
+                        <tr className="bg-blue-500 ">
                             <th className="py-3 px-6 text-left">User Name</th>
                             <th className="py-3 px-6 text-left">Email</th>
                             <th className="py-3 px-6 text-left">Role</th>
@@ -74,7 +75,7 @@ const ManageUsers = () => {
                     </thead>
                     <tbody>
                         {users.map(user => (
-                            <tr key={user._id} className="border-b hover:bg-gray-100">
+                            <tr key={user._id} className="border-b ">
                                 <td className="py-4 px-6">
                                     {user.name }
                                     {user.status === 'fraud' && (
@@ -83,11 +84,11 @@ const ManageUsers = () => {
                                 </td>
                                 <td className="py-4 px-6">{user.email}</td>
                                 <td className="py-4 px-6">{user.role}</td>
-                                <td className="py-4 px-6 space-x-2">
+                                <td className="py-4 px-6 space-x-2 ">
                                     {user.role !== 'admin' && (
                                         <button
                                             onClick={() => handleRoleChange(user._id, 'admin')}
-                                            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none"
+                                            className="bg-green-500  px-4 py-2 rounded-md hover:bg-green-600 focus:outline-none"
                                         >
                                             Make Admin
                                         </button>
@@ -95,7 +96,7 @@ const ManageUsers = () => {
                                     {user.role !== 'agent' && (
                                         <button
                                             onClick={() => handleRoleChange(user._id, 'agent')}
-                                            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+                                            className="bg-blue-500  px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
                                         >
                                             Make Agent
                                         </button>
@@ -103,14 +104,14 @@ const ManageUsers = () => {
                                     {user.role === 'agent' && (
                                         <button
                                             onClick={() => handleFraud(user._id)}
-                                            className="bg-yellow-500 text-white px-4 py-2 rounded-md hover:bg-yellow-600 focus:outline-none"
+                                            className="bg-yellow-500  px-4 py-2 rounded-md hover:bg-yellow-600 focus:outline-none"
                                         >
                                             Mark as Fraud
                                         </button>
                                     )}
                                     <button
                                         onClick={() => handleDeleteUser(user._id)}
-                                        className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none"
+                                        className="bg-red-500  px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none"
                                     >
                                         Delete User
                                     </button>

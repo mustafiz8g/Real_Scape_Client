@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import Container from '../../Components/Shared/Container';
+import TitleSubTitle from '../../Components/TitleSubTitle';
 
 
 const fetchProperties = async () => {
@@ -23,11 +24,12 @@ const ManageProperties = () => {
 
     return (
        <Container>
-         <div className="p-6 bg-gray-100 min-h-screen">
-            <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Manage Properties</h2>
+         <div className="p-6  min-h-screen">
+
+            <TitleSubTitle title='Manage properties'></TitleSubTitle>
             <div className="overflow-x-auto">
-                <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
-                    <thead className="bg-blue-600 text-white">
+                <table className="w-full  shadow-lg rounded-lg overflow-hidden">
+                    <thead className="bg-blue-600 ">
                         <tr>
                             <th className="py-3 px-4">Title</th>
                             <th className="py-3 px-4">Location</th>
@@ -39,7 +41,7 @@ const ManageProperties = () => {
                     </thead>
                     <tbody>
                         {properties.map(property => (
-                            <tr key={property._id} className="border-b hover:bg-gray-100 transition">
+                            <tr key={property._id} className="border-b hover: transition">
                                 <td className="py-3 px-4">{property.title}</td>
                                 <td className="py-3 px-4">{property.location}</td>
                                 <td className="py-3 px-4">{property.agent.name}</td>

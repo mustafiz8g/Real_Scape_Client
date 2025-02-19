@@ -11,7 +11,7 @@ import Contact from '../Components/Home/Contact'
 
 const Home = () => {
   return (
-    <div >
+    <div className='space-y-20'>
       <Helmet>
         <title> Real-Scape | Home </title>
       </Helmet>

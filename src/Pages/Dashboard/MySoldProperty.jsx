@@ -1,9 +1,11 @@
+import Container from "../../Components/Shared/Container";
+import TitleSubTitle from "../../Components/TitleSubTitle";
 
 const MySoldProperty = () => {
     return (
-        <div>
-            sold property
-        </div>
+       <Container>
+         <TitleSubTitle title="My Sold Property"></TitleSubTitle>
+       </Container>
     );
 };
 

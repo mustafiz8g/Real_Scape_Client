@@ -12,7 +12,7 @@ const WishlistCard = ({ wishlist, onRemove }) => {
     };
 
     return (
-        <div className="relative bg-gradient-to-b from-gray-50 via-white to-gray-100 shadow-xl rounded-2xl overflow-hidden group transform hover:-translate-y-2 hover:shadow-2xl transition duration-300">
+        <div className="relative bg-gradient-to-b  shadow-xl rounded-2xl overflow-hidden group transform hover:-translate-y-2 hover:shadow-2xl transition duration-300 ">
             {/* Image Section */}
             <div className="relative">
                 <img
@@ -21,7 +21,7 @@ const WishlistCard = ({ wishlist, onRemove }) => {
                     className="h-48 w-full object-cover rounded-t-2xl"
                 />
                 {/* Floating Price Tag */}
-                <div className="absolute top-4 left-4 bg-green-500 text-white text-sm font-semibold px-3 py-1 rounded-md shadow-md">
+                <div className="absolute top-4 left-4 bg-green-500  text-sm font-semibold px-3 py-1 rounded-md shadow-md">
                     ${price.minPrice} - ${price.maxPrice}
                 </div>
             </div>
@@ -29,13 +29,13 @@ const WishlistCard = ({ wishlist, onRemove }) => {
             {/* Details Section */}
             <div className="p-6 space-y-4">
                 {/* Title */}
-                <h3 className="text-xl font-bold text-gray-800 group-hover:text-green-600 transition">
+                <h3 className="text-xl font-bold  group-hover:text-green-600 transition">
                     {title}
                     <span className="text-blue-600 badge">{verification}</span>
                 </h3>
 
                 {/* Location */}
-                <p className="text-gray-600 text-sm">
+                <p className=" text-sm">
                     <span className="font-medium">Location:</span> {location}
                 </p>
 
@@ -44,11 +44,11 @@ const WishlistCard = ({ wishlist, onRemove }) => {
                     <img
                         src={agent?.image || "https://via.placeholder.com/40"}
                         alt={agent?.name || "Agent"}
-                        className="w-10 h-10 rounded-full border border-gray-300 object-cover"
+                        className="w-10 h-10 rounded-full border  object-cover"
                     />
                     <div>
-                        <p className="font-medium text-gray-800">{agent?.name || "Agent"}</p>
-                        <p className="text-xs text-gray-500">Trusted Agent</p>
+                        <p className="font-medium ">{agent?.name || "Agent"}</p>
+                        <p className="text-xs ">Trusted Agent</p>
                     </div>
                 </div>
 

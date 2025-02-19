@@ -11,17 +11,17 @@ const AddPropertyForm = ({handleSubmit, uploadImage,setuUploadImage,loading}) =>
       }
   
   return (
-    <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50'>
-      <form onSubmit={handleSubmit} className='w-full max-w-3xl p-8 space-y-6 bg-white rounded-lg shadow-lg'>
+    <div className='w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center  rounded-xl '>
+      <form onSubmit={handleSubmit} className='w-full max-w-3xl p-8 space-y-6  rounded-lg shadow-lg'>
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-10'>
           <div className='space-y-6'>
             {/* Name */}
             <div className='space-y-1 text-sm'>
-              <label htmlFor='title' className='block text-gray-600'>
+              <label htmlFor='title' className='block '>
                 Property title
               </label>
               <input
-                className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white'
+                className='w-full px-4 py-3  border border-blue-300 focus:outline-blue-500 rounded-md '
                 name='title'
                 id='title'
                 type='text'
@@ -31,11 +31,11 @@ const AddPropertyForm = ({handleSubmit, uploadImage,setuUploadImage,loading}) =>
             </div>
             {/* Location */}
             <div className='space-y-1 text-sm'>
-              <label htmlFor='location' className='block text-gray-600'>
+              <label htmlFor='location' className='block '>
                 Property Location
               </label>
               <input
-                className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white'
+                className='w-full px-4 py-3  border border-blue-300 focus:outline-blue-500 rounded-md '
                 name='location'
                 id='location'
                 type='text'
@@ -54,12 +54,12 @@ const AddPropertyForm = ({handleSubmit, uploadImage,setuUploadImage,loading}) =>
             <div className=''>
               {/* Price */}
               <div className='space-y-1 text-sm'>
-                <label htmlFor='price' className=' text-gray-600 '>
+                <label htmlFor='price' className='  '>
                   Price Range
                 </label>
               <div className="flex gap-2">
               <input
-                  className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white'
+                  className='w-full px-4 py-3  border border-blue-300 focus:outline-blue-500 rounded-md '
                   name='price1'
                   id='price1'
                   type='number'
@@ -67,7 +67,7 @@ const AddPropertyForm = ({handleSubmit, uploadImage,setuUploadImage,loading}) =>
                   required
                 />
                   <input
-                  className='w-full px-4 py-3 text-gray-800 border border-blue-300 focus:outline-blue-500 rounded-md bg-white'
+                  className='w-full px-4 py-3  border border-blue-300 focus:outline-blue-500 rounded-md '
                   name='price2'
                   id='price2'
                   type='number'

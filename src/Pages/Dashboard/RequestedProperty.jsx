@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Container from '../../Components/Shared/Container';
+import TitleSubTitle from '../../Components/TitleSubTitle';
 
 const RequestedProperty = () => {
     const [offers, setOffers] = useState([]);
@@ -48,11 +49,11 @@ const RequestedProperty = () => {
 
     return (
         <Container>
-            <div className="p-6 bg-gray-100 min-h-screen">
-                <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">Requested Properties</h2>
+            <div className="p-6  min-h-screen">
+                <TitleSubTitle title='Requested Property'></TitleSubTitle>
                 <div className="overflow-x-auto">
-                    <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
-                        <thead className="bg-blue-600 text-white">
+                    <table className="w-full  shadow-lg rounded-lg overflow-hidden">
+                        <thead className="bg-blue-600 ">
                             <tr>
                                 <th className="py-3 px-4">Title</th>
                                 <th className="py-3 px-4">Location</th>
@@ -65,7 +66,7 @@ const RequestedProperty = () => {
                         </thead>
                         <tbody>
                             {offers.map(offer => (
-                                <tr key={offer._id} className="border-b hover:bg-gray-100 transition">
+                                <tr key={offer._id} className="border-b  transition">
                                     <td className="py-3 px-4">{offer.title}</td>
                                     <td className="py-3 px-4">{offer.location}</td>
                                     <td className="py-3 px-4">{offer.userEmail}</td>

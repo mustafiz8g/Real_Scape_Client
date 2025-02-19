@@ -53,7 +53,7 @@ const MyReviews = () => {
           {reviewss.map((review) => (
             <div
               key={review._id}
-              className="bg-white shadow-md rounded-lg p-4 border flex flex-col justify-between"
+              className=" shadow-md rounded-lg p-4 border flex flex-col justify-between"
             >
               <div className="flex items-center gap-4 mb-4">
                 <img
@@ -63,22 +63,22 @@ const MyReviews = () => {
                 />
                 <div>
                   <h2 className="font-bold text-lg">{review.property_title || "Untitled Review"}</h2>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm ">
                     <strong>Agent:</strong> {review.agentName || "N/A"}
                   </p>
                 </div>
               </div>
 
-              <p className="text-gray-600 mb-2">Review: {review.reviewText || "No review text provided."}</p>
+              <p className=" mb-2">Review: {review.reviewText || "No review text provided."}</p>
              
-              <p className="text-sm text-gray-500 mb-4">
+              <p className="text-sm  mb-4">
                 <strong>Date:</strong>{" "}
                 {new Date(review.date).toLocaleDateString() || "Unknown"}
               </p>
 
               <button
                 onClick={() => deleteMutation.mutate(review._id)}
-                className="px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition"
+                className="px-4 py-2 bg-red-500  font-semibold rounded-lg hover:bg-red-600 transition"
               >
                 Delete Review
               </button>

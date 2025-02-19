@@ -5,6 +5,7 @@ import { imageUpload } from '../../hooks/Utils'
 import useAuth from '../../hooks/useAuth'
 import useAxiosSecure from '../../hooks/useAxiosSecure'
 import AddPropertyForm from '../../Components/Form/AddPropertyForm'
+import TitleSubTitle from '../../Components/TitleSubTitle'
 const AddProperty = () => {
   const {user} = useAuth()
   const axiosSecure = useAxiosSecure()
@@ -58,7 +59,7 @@ const AddProperty = () => {
       <Helmet>
         <title>Add properties | Dashboard</title>
       </Helmet>
-
+       <TitleSubTitle title='Add Property'></TitleSubTitle>
       {/* Form */}
       <AddPropertyForm handleSubmit = {handleSubmit} uploadImage={uploadImage} 
       setuUploadImage={setUploadImage} loading={loading}/>

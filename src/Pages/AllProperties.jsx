@@ -7,6 +7,7 @@ import axios from 'axios';
 import LoadingSpinner from '../Components/Shared/LoadingSpinner';
 import Container from '../Components/Shared/Container';
 import AllPropertyCard from './AllPropertyCard';
+import TitleSubTitle from '../Components/TitleSubTitle';
 
 const AllProperties = () => {
   const [searchLocation, setSearchLocation] = useState('');
@@ -33,6 +34,7 @@ const AllProperties = () => {
 
   return (
     <Container>
+      <TitleSubTitle title='All Properties'></TitleSubTitle>
       {/* Search and Sort */}
       <div className="join flex justify-center">
         <div>

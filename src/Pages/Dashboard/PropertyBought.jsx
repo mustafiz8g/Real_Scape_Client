@@ -18,9 +18,9 @@ const PropertyBought = () => {
         {offers.map((offer) => (
           <div key={offer._id} className="p-4 border rounded-lg shadow-lg">
             <h3 className="text-xl font-bold">{offer.title}</h3>
-            <p className="text-gray-600">Agent: {offer.agentName}</p>
-            <p className="text-gray-600">Offered Amount: ${offer.amount}</p>
-            <p className="text-gray-600">Location: {offer?.location}</p> {/* Added location */}
+            <p className="">Agent: {offer.agentName}</p>
+            <p className="">Offered Amount: ${offer.amount}</p>
+            <p className="">Location: {offer?.location}</p> {/* Added location */}
             {offer.image && <img src={offer.image} alt={offer.title} className="w-full h-40 object-cover mt-4" />} {/* Added image */}
             <p className={`font-semibold ${offer.boughtStatus === "accepted" ? "text-green-500" : "text-yellow-500"}`}>
               Status: {offer.boughtStatus}

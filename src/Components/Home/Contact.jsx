@@ -9,9 +9,9 @@ const Contact = () => {
             <div className=" p-8 rounded-xl shadow-sm ">
                
                       <TitleSubTitle 
-                                   title='Featured Properties
-                    ' 
-                                   subTitle='Here are two listings displayed with the featured property shortcode, which you can use when you have some special properties to present.
+                                   title='Schedule a meeting with our team' 
+                                   subTitle='Our experts and developers would love to contribute their expertise and insights to your real estate plans.
+
                     '></TitleSubTitle>
                 <form className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">

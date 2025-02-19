@@ -9,6 +9,7 @@ import LoadingSpinner from "../../Components/Shared/LoadingSpinner";
 import useAuth from "../../hooks/useAuth";
 import Container from "../../Components/Shared/Container";
 import { Link } from "react-router-dom";
+import TitleSubTitle from "../../Components/TitleSubTitle";
 
 const MyAddedProperty = () => {
   const { user } = useAuth(); 
@@ -49,12 +50,13 @@ const MyAddedProperty = () => {
   // Render the UI
   return (
     <Container>
+      <TitleSubTitle title="My Added Property"></TitleSubTitle>
       {userProperties && userProperties.length > 0 ? (
         <div className="pt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
           {userProperties.map((property) => (
             <div
               key={property._id}
-              className="bg-white shadow-md rounded-lg p-4 border flex flex-col"
+              className=" shadow-md rounded-lg p-4 border flex flex-col"
             >
               {/* Property Image */}
               <img
@@ -65,11 +67,11 @@ const MyAddedProperty = () => {
 
               {/* Property Details */}
               <h3 className="text-lg font-semibold">{property.title}</h3>
-              <p className="text-sm text-gray-600">Location: {property.location}</p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm ">Location: {property.location}</p>
+              <p className="text-sm ">
                 Price: ${property.minPrice?.toLocaleString()} - ${property.maxPrice?.toLocaleString()}
               </p>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm ">
                 Status: <span className="font-bold"> {property.verification}</span>
               </p>
 
@@ -80,7 +82,7 @@ const MyAddedProperty = () => {
                   alt={property.agent?.name}
                   className="w-8 h-8 rounded-full mr-2"
                 />
-                <span className="text-sm text-gray-600">{property.agent?.name}</span>
+                <span className="text-sm ">{property.agent?.name}</span>
               </div>
 
               {/* Action Buttons */}
@@ -106,7 +108,7 @@ const MyAddedProperty = () => {
           ))}
         </div>
       ) : (
-        <h1 className="text-center text-xl text-gray-600 mt-12">No Properties Found</h1>
+        <h1 className="text-center text-xl  mt-12">No Properties Found</h1>
       )}
     </Container>
   );

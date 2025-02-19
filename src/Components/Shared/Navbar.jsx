@@ -95,11 +95,11 @@ return (
               {
                 user ?
 
-                  <div className="dropdown">
+                  <div className="dropdown ">
                     <div tabIndex={0} role="button" className="">
-                      <div className="flex justify-center items-center gap-2">
+                      <div className="flex justify-center items-center gap-2 ">
 
-                        <div className="w-12 h-12">
+                        <div className="w-12 h-12 ">
                           <img title={user.displayName} className="w-full h-full  object-contain rounded-full border  border-white border-2 hover:border-[#155dfc]" src={user?.photoURL} alt="profile" />
                         </div>
                       </div>
@@ -107,7 +107,7 @@ return (
                     </div>
                     <ul
                       tabIndex={0}
-                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 right-3 shadow ">
+                      className="menu menu-sm bg-[#D1F8EF] dropdown-content  rounded-box z-[1] mt-3 w-52 p-2 right-3 shadow ">
                       {navOptions2}
                     </ul>
                   </div>
